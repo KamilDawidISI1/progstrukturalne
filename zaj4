@@ -233,3 +233,171 @@ int main()
     }
     return 0;
 }
+
+
+zad 8
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int wyraz(int x)
+{
+    if(x==0 || x==1) return 1;
+    if(x%2==0)
+        return wyraz(x-1)+x;
+    else
+        return wyraz(x-1)*x;
+
+
+}
+
+int main()
+{
+
+    int i;
+    for(i=0;i<10;i++){
+        printf("%d ; ", wyraz(i));
+
+    }
+    return 0;
+}
+
+
+zad9
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int wyraz(int x)
+{
+    if(x<=2) return 1;
+    if(x%3==0)
+        return wyraz(x-1)+wyraz(x-2);
+    else if(x%3==1)
+        return wyraz(x-1)*5 +4;
+    else if(x%3==2)
+        return wyraz(x-1)+1;
+
+
+}
+
+int main()
+{
+
+    int i;
+    for(i=0;i<10;i++){
+        printf("%d ; ", wyraz(i));
+
+    }
+    return 0;
+}
+
+
+zad 10
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int wyraz(int n, int x, int y)
+{
+    if(n==0)
+        return x;
+    if(n==1)
+        return y;
+    return wyraz(n-1, x, y)+wyraz(n-2, x, y);
+}
+
+int main()
+{
+    int x, y;
+    scanf("%d%d", &x, &y);
+    int i;
+    for(i=0;i<10;i++){
+        printf("%d ; ", wyraz(i, x, y));
+
+    }
+    return 0;
+}
+
+zad 11
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int wyraz(int n, int x)
+{
+    if(n==0)
+        return x;
+
+    if(wyraz(n-1, x)%2==0)
+        return wyraz(n-1, x)/2;
+    else
+        return 3*wyraz(n-1, x)+1;
+
+}
+
+int main()
+{
+    int x = 101;
+    int i;
+    for(i=0;i<30;i++){
+        printf("%d ; ", wyraz(i, x));
+        if(wyraz(i, x)==1){
+            break;
+        }
+    }
+
+    return 0;
+}
+
+
+zad 12
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int f(int x, int y)
+{
+    if(y==0)
+        return x;
+    else if(x==0)
+        return y;
+    else
+        return f(x-1, y) + f(x, y-1) + f(x-1, y-1);
+
+
+}
+
+int main()
+{
+    int x=10;
+    int y=10;
+
+    printf("%d",f(x, y));
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
