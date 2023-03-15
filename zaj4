@@ -24,7 +24,7 @@ int main()
 }
 
 
-zad 2
+zad 2 void
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -46,5 +46,159 @@ int main()
     zsumuj(4);
     zsumuj(5);
 
+    return 0;
+}
+
+zad 2 int 
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int zsumuj(int a){
+
+    static int liczba=0;
+    liczba += a;
+    return liczba;
+}
+
+int main()
+{
+
+    printf("Podales : %d. Suma = %d\n", 5, zsumuj(5));
+    printf("Podales : %d. Suma = %d\n", 4, zsumuj(4));
+    printf("Podales : %d. Suma = %d\n", 3, zsumuj(3));
+    printf("Podales : %d. Suma = %d\n", 2, zsumuj(2));
+    printf("Podales : %d. Suma = %d\n", 1, zsumuj(1));
+
+
+    return 0;
+}
+
+zad3
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+unsigned int silnia(int x)
+{
+    if(x==0) return 1;
+    return x*silnia(x-1);
+}
+
+int main()
+{
+
+    printf("silnia z 0 = %d\n", silnia(0));
+    printf("silnia z 1 = %d\n", silnia(1));
+    printf("silnia z 2 = %d\n", silnia(2));
+    printf("silnia z 3 = %d\n", silnia(3));
+    printf("silnia z 4 = %d\n", silnia(4));
+
+    return 0;
+}
+
+zad 4
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int wyraz(int x)
+{
+    if(x == 0) return 1;
+        return 2*wyraz(x-1)+5;
+}
+
+int main()
+{
+    int i;
+    for(i=0;i<10;i++){
+        printf("%d ; ", wyraz(i));
+    }
+
+
+    return 0;
+}
+
+zad5
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int wyraz(int x)
+{
+    if(x == 0 || x == 1) return 1;
+        return wyraz(x-1)+ 2*wyraz(x-2)+3;
+}
+
+int main()
+{
+    int i;
+    for(i=0;i<10;i++){
+        printf("%d ; ", wyraz(i));
+    }
+
+
+    return 0;
+}
+
+zad 6
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int wyraz(int x)
+{
+    if(x<=1) return 1;
+        return wyraz(x-1)+ wyraz(x-2);
+}
+
+void ograniczenie(int k){
+
+    int i;
+    for(i=0;i<k;i++){
+            if(wyraz(i)>k){
+            break;
+        }
+        printf("%d ; ", wyraz(i));
+
+    }
+
+}
+
+int main()
+{
+    int x;
+    scanf("%d", &x);
+    ograniczenie(x);
+
+    return 0;
+}
+
+
+ciag tribonaciego
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int wyraz(int x)
+{
+    if(x<=2) return 1;
+        return wyraz(x-1)+ wyraz(x-2)+wyraz(x-3);
+}
+
+int main()
+{
+
+    int i;
+    for(i=0;i<10;i++){
+        printf("%d ; ", wyraz(i));
+
+    }
     return 0;
 }
