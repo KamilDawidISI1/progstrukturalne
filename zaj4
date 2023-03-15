@@ -1,1 +1,50 @@
+zad 1
 
+#include <stdio.h>
+#include <stdlib.h>
+
+
+void zlicz(){
+
+    static int liczba=0;
+    liczba++;
+    printf("Te funkcje wywolano %d razy\n", liczba);
+
+}
+
+int main()
+{
+    zlicz();
+    zlicz();
+    zlicz();
+    zlicz();
+    zlicz();
+
+    return 0;
+}
+
+
+zad 2
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+void zsumuj(int a){
+
+    static int liczba=0;
+    liczba += a;
+    printf("Podales : %d. Suma = %d\n", a, liczba);
+
+}
+
+int main()
+{
+    zsumuj(5);
+    zsumuj(3);
+    zsumuj(2);
+    zsumuj(4);
+    zsumuj(5);
+
+    return 0;
+}
