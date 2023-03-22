@@ -1,1 +1,157 @@
+#include <stdio.h>
+#include <stdlib.h>
 
+int podwoj(int *x){
+    *x=2*(*x);
+    return *x;
+}
+
+int mniejsza(int *a, int *b){
+    if(*a<*b){
+        return *a;
+    }else
+        return *b;
+}
+
+void zamiana(int *x, int *y){
+int temp;
+temp = *x;
+*x = *y;
+*y = temp;
+}
+
+void zmiennajakmniejsza(int *x, int *y){
+    if(*x>*y){
+        int temp;
+        temp = *x;
+        *x = *y;
+        *y = temp;
+    }
+}
+
+int suma(int *a, int *b){
+    return *a+*b;
+}
+
+void przepisz(int n, int*x){
+    *x = n;
+}
+
+int* rezerwacja(){
+    return malloc(sizeof(int));
+}
+
+int* rezerwacjafloat(){
+    return malloc(sizeof(float));
+}
+
+int main()
+{
+    int a = 2;
+    int b = 6;
+
+    printf("zad1\n");
+    printf("%d\n", podwoj(&a));
+    printf("%d\n", a);
+    printf("zad2\n");
+    printf("%p\n", a);
+    printf("%p\n", b);
+    printf("%p\n", mniejsza(&a, &b));
+    printf("zad3\n");
+    zamiana(&a, &b);
+    printf("%d\n", a);
+    printf("%d\n", b);
+    printf("%p\n", a);
+    printf("%p\n", b);
+    printf("zad4\n");
+    zmiennajakmniejsza(&a, &b);
+    printf("%d\n", a);
+    printf("%d\n", b);
+    printf("%p\n", a);
+    printf("%p\n", b);
+
+
+    printf("zad5\n");
+    int const x = 5;
+    int const y = 5;
+    printf("%d\n", suma(&x, &y));
+
+    printf("zad6\n");
+    int n = 15;
+    przepisz(n, &x);
+    printf("%d\n", x);
+    printf("zad9\n");
+    int *wsk = rezerwacja();
+    printf("%p\n", wsk);
+    printf("zad10\n");
+    int *wskfloat = rezerwacjafloat();
+    printf("%p\n", wskfloat);
+
+    return 0;
+}
+
+
+
+------------------------------------------
+
+#include <stdio.h>
+#include <stdlib.h>
+//12
+int* rezerwuj(int n){
+    return malloc(n*sizeof(int));
+}
+
+
+void przepisz_stala(const int* x, int* y)
+{
+    *y = *x;
+}
+
+double f(int x){
+    return 3*x;
+}
+
+double g(double(*fun)(int x), int n){
+    return fun(n);
+}
+
+int foo1(int x){
+    return 3*x;
+}
+int foo2(int x){
+    return x*x;
+}
+
+void h(int (*fun1)(int x), int (*fun2)(int x), int n){
+    if(fun1(n)==fun2(n)){
+        printf("sa rowne");
+    }else{
+        printf("nie sa rowne");
+    }
+}
+
+int main()
+{
+    printf("zad15\n");
+    const int a=5;
+    int b=19;
+    przepisz_stala(&a, &b);
+    printf("a = %d\n", a);
+    printf("b = %d\n", b);
+
+    int n = 6;
+    double (*wsknaf)(int);
+    wsknaf = &f;
+    printf("%p\n", wsknaf);
+    printf("%f\n", g(wsknaf, n));
+
+    int (*wsknaf1)(int);
+    int (*wsknaf2)(int);
+
+    wsknaf1 = &foo1;
+    wsknaf2 = &foo2;
+
+    h(wsknaf1, wsknaf2, 5);
+
+    return 0;
+}
