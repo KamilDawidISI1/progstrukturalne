@@ -1,0 +1,302 @@
+cw0
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void wypisz(unsigned int n, int * tab){
+    int i;
+    for(i=0;i<n;i++){
+        printf("%d\t", tab[i]);
+    }
+    printf("\n");
+
+}
+
+
+int main()
+{
+    printf("cw 4.2.0\n\n");
+    int rozmiar = 4;
+    int tab[rozmiar];
+    tab[0]=6; tab[1]=2; tab[2]=5; tab[3]=8;
+    wypisz(rozmiar, tab);
+    printf("%d\n", *tab);
+    int tab2[] = {9, 5, 7 ,3};
+    wypisz(rozmiar, tab2);
+    printf("%d\n", tab2[2]);
+    return 0;
+}
+
+
+cw1
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void wypisz(unsigned int n, int * tab){
+    int i;
+    for(i=0;i<n;i++){
+        printf("%d\t", tab[i]);
+    }
+    printf("\n");
+
+}
+
+void zerowanie(unsigned int n, int * tab){
+    int i;
+    for(i=0;i<n;i++){
+        tab[i]=0;
+    }
+    wypisz(n, tab);
+}
+
+void nrindexu(unsigned int n, int * tab){
+    int i;
+    for(i=0;i<n;i++){
+        tab[i]=i;
+    }
+    wypisz(n, tab);
+}
+
+void podwojenie(unsigned int n, int * tab){
+    int i;
+    for(i=0;i<n;i++){
+        tab[i]*=2;
+    }
+    wypisz(n, tab);
+}
+
+void warbezw(unsigned int n, int * tab){
+    int i;
+    for(i=0;i<n;i++){
+        tab[i] = abs(tab[i]);
+        }
+    }
+    wypisz(n, tab);
+}
+
+int main()
+{
+    printf("cw 4.2.1\n\n");
+    int rozmiar = 5;
+    int tab[] = {4,-3,2,-6,5};
+    wypisz(rozmiar, tab);
+    warbezw(rozmiar, tab);
+    zerowanie(rozmiar, tab);
+    nrindexu(rozmiar, tab);
+    podwojenie(rozmiar, tab);
+
+    return 0;
+}
+
+cw2
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void wypisz(unsigned int n, int * tab){
+    int i;
+    for(i=0;i<n;i++){
+        printf("%d\t", tab[i]);
+    }
+    printf("\n");
+
+}
+
+int suma(unsigned int n, int * tab){
+    int i;
+    int suma = 0;
+    for(i=0;i<n;i++){
+        suma = suma + tab[i];
+    }
+    return suma;
+}
+
+int suma2(unsigned int n, int * tab){
+    int i;
+    int suma = 0;
+    for(i=0;i<n;i++){
+        suma = suma + tab[i]*tab[i];
+    }
+    return suma;
+}
+
+float srednia(unsigned int n, int * tab){
+
+int i;
+    float s = 0;
+    for(i=0;i<n;i++){
+        s = s + tab[i];
+    }
+    return s/n;
+}
+
+
+int main()
+{
+    printf("cw 4.2.2\n\n");
+    int rozmiar = 6;
+    int tab[] = {8, 2, -5, 1, 0, -9};
+    wypisz(rozmiar, tab);
+    printf("Suma: %d\n",suma(rozmiar, tab));
+    printf("Suma kwadratow: %d\n",suma2(rozmiar, tab));
+    printf("Srednia: %f\n",srednia(rozmiar, tab));
+    return 0;
+}
+
+cw4
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+void wypisz(unsigned int n, unsigned int * tab){
+    int i;
+    for(i=0;i<n;i++){
+        printf("%d\t", tab[i]);
+    }
+    printf("\n");
+
+}
+
+float sredniageometryczna(unsigned int n, unsigned int * tab){
+
+int i;
+    float s = 1;
+    for(i=0;i<n;i++){
+        s = s * tab[i];
+    }
+    float sr = pow(s, 1.0/n);
+    return sr;
+}
+
+float sredniaharmoniczna(unsigned int n, int * tab){
+
+int i;
+    float s = 0;
+    for(i=0;i<n;i++){
+        s = s + (1.0/tab[i]);
+    }
+    return n/s;
+}
+
+
+int main()
+{
+    printf("cw 4.2.4\n\n");
+    unsigned int tab[] = {8, 2, 5, 1, 9};
+    wypisz(5, tab);
+    printf("Srednia geometryczna: %f\n",sredniageometryczna(5, tab));
+    printf("Srednia harmoniczna: %f\n",sredniaharmoniczna(5, tab));
+    return 0;
+}
+
+
+cw5
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <stdbool.h>
+
+void wypisz(unsigned int n, bool * tab){
+    int i;
+    for(i=0;i<n;i++){
+        printf("%d\t", tab[i]);
+    }
+    printf("\n");
+
+}
+
+void sito(unsigned int n){
+bool tab[n];
+int i;
+for(i=0;i<n;i++){
+    tab[i] = true;
+}
+
+int j, k;
+for(j=2;j<n;j++){
+    if(tab[j]){
+        for(k=2*j;k<n;k=k+j){
+            tab[k]=false;
+        }
+    }
+}
+
+
+
+int l;
+for(l=n-1;l>0;l--){
+    if(tab[l]){
+        printf("Najwieksza liczba pierwsza mniejsza od %d: %d\n", n, l);
+        break;
+    }
+}
+int m;
+int wynik = 0;
+for(m=2;m<n; m++){
+    if(tab[m]){
+        wynik++;
+    }
+}
+printf("Liczba liczb pierwszych: %d", wynik);
+}
+
+
+int main()
+{
+    printf("cw 4.2.5\n\n");
+
+    sito(1000);
+
+    return 0;
+}
+
+cw6
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+void wypisz(unsigned int n, int * tab){
+    int i;
+    for(i=0;i<n;i++){
+        printf("%d\t", tab[i]);
+    }
+    printf("\n");
+
+}
+
+void przepisz(unsigned int n, int * tab1, int * tab2){
+    int i;
+    for(i=0;i<n;i++){
+        tab2[i]=tab1[i];
+    }
+}
+
+void przepiszodwr(unsigned int n, int * tab1, int * tab2){
+    int i;
+    for(i=0;i<n;i++){
+        tab2[i]=tab1[n-1-i];
+    }
+}
+
+int main()
+{
+    printf("cw 4.2.6\n\n");
+
+    int tab[] = {1, 2 , 3, 4, 5, 6};
+    int tabb[] = {4, 6, 6, 3, 3, 4};
+
+    wypisz(6, tab);
+    wypisz(6, tabb);
+    przepisz(6, tab, tabb);
+    wypisz(6, tab);
+    wypisz(6, tabb);
+    przepiszodwr(6, tab, tabb);
+    wypisz(6, tab);
+    wypisz(6, tabb);
+
+    return 0;
+}
