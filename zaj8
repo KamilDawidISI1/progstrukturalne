@@ -1,1 +1,126 @@
+zad0
 
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    printf("%d\n",sizeof(char));
+    printf("%d\n",sizeof(wchar_t));
+    printf("%d\n",'a');
+    printf("%d\n",'A');
+    printf("%d\n",' ');
+    printf("%d\n",'1');
+    printf("%d\n",'!');
+    printf("%d\n",'>');
+
+    int i;
+    for(i=0;i<=127;i++){
+        printf("%d, '%c'\n", i, i);
+    }
+
+    return 0;
+}
+
+
+zad1
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void wyczysc(char *napis){
+   napis[0]=0;
+   }
+
+int main()
+{
+
+
+   char *napis = "pieczewo";
+   printf(napis);
+   printf("\n");
+   printf("po wyczyszczeniu: ");
+   wyczysc(napis);
+   printf(napis);
+   free(napis);
+
+    return 0;
+}
+
+
+zad2
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int dlugosc(char *napis){
+   int i=0;
+    int pom=0;
+   while(napis[i]!=0){
+        if(napis[i]!=32){
+            pom++;
+            }
+        i++;
+   }
+   return pom;
+   }
+
+
+
+int main()
+{
+
+    char *napis = "Jestem w Stegnie, na plazy. W Stegnie na plazy.";
+    printf("%d\n",dlugosc(napis));
+
+    return 0;
+}
+
+
+zad3
+#include <stdio.h>
+#include <stdlib.h>
+
+int dlugosc(char *napis){
+   int i=0;
+    int pom=0;
+   while(napis[i]!=0){
+        if(napis[i]!=32){
+            pom++;
+            }
+        i++;
+   }
+   return pom;
+   }
+
+  
+   int porownaj2(char *napis1, char *napis2){
+       int i;
+       int pom;
+       if(dlugosc(napis1)==dlugosc(napis2)){
+        for(i=0;i<dlugosc(napis2)-1;i++)
+            if(napis1!=napis2)
+                return 0;
+            else
+                return 1;
+            }
+        else
+            return 0;
+   }
+
+
+
+
+
+int main()
+{
+
+    char *napis = "Jestem w Stegnie, na plazy. W Stegnie na plazy.";
+    char *napis1 = "Jestem w Stegnie, na plazy. W Stegnia na plazy.";
+
+    printf("%d\n",dlugosc(napis));
+    printf("%d\n",porownaj2(napis, napis1));
+
+
+    return 0;
+}
