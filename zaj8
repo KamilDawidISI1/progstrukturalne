@@ -124,3 +124,87 @@ int main()
 
     return 0;
 }
+
+
+zad6
+#include <stdio.h>
+#include <stdlib.h>
+
+int dlugosc(char *napis){
+    int i=0;
+    while(napis[i]!=0){
+        i++;
+    }
+    return i;
+}
+
+
+
+void kopiujn(char *nap1, char *nap2, int n){
+    int i;
+    for(i=0;i<dlugosc(nap1)&&i<n;i++){
+        nap2[i]=nap1[i];
+    }
+    nap2[i]=0;
+}
+
+int main()
+{
+    char *nap1 = "Stegna";
+    char nap2[30] = "TAK";
+    int n =3;
+    kopiujn(nap1, nap2, n);
+    printf(nap2);
+
+    return 0;
+}
+
+zad7i8
+#include <stdio.h>
+#include <stdlib.h>
+
+int dlugosc(char *napis){
+    int i=0;
+    while(napis[i]!=0){
+        i++;
+    }
+    return i;
+}
+
+
+void konkatenacja(char *nap1, char *nap2, char *nap3){
+    int i;
+    int n1=dlugosc(nap1);
+    int n2=dlugosc(nap2);
+    for(i=0;i<n1;i++){
+        nap3[i]=nap1[i];
+    }
+    int x;
+    for(x=i;x<n1+n2;x++){
+        nap3[x]=nap2[x-i];
+    }
+}
+
+void zamiana(char *nap){
+    int i;
+    for(i=0;i<dlugosc(nap);i++){
+        if(nap[i]>=97 && nap[i]<=127)
+            nap[i]-=32;
+    }
+}
+
+int main()
+{
+    char *nap1 = "Ala m";
+    char *nap2 = "a kota";
+    char nap3[30] = "gfdg";
+
+    konkatenacja(nap1, nap2, nap3);
+    printf(nap3);
+    printf("\n");
+    zamiana(nap3);
+    printf(nap3);
+
+    return 0;
+}
+
