@@ -108,3 +108,191 @@ wytnij2(napiszad101,napiszad102);
 printf(napiszad101);
 
 }
+
+
+zad 5.2.20
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+char * wypiszgodzine(int godz, int min, int sek){
+    char *wynik = malloc(9*sizeof(char));
+    sprintf(wynik, "%02d:%02d:%02d", godz, min, sek);
+    return wynik;
+}
+
+
+int main()
+{
+    int godz = 7;
+    int min = 47;
+    int sek = 6;
+    printf(wypiszgodzine(godz, min, sek));
+
+    return 0;
+}
+
+zad 5.2.26
+#include <stdio.h>
+#include <stdlib.h>
+#include <wchar.h>
+
+void naduze(char *napis){
+    int i;
+    for(i=0;napis[i]!=0;i++){
+        napis[i]=towupper(napis[i]);
+    }
+}
+
+
+int main()
+{
+    char napis[40] = "Zamienie MALE litery NA duZe 2+2=4";
+    printf(napis);
+    printf("\n");
+    naduze(napis);
+    printf(napis);
+
+    return 0;
+}
+
+zad 5.2.22
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <wchar.h>
+#include <string.h>
+
+char* sklej(char* napis1, char* napis2, char* napis3) {
+    size_t dlugosc1 = strlen(napis1);
+    size_t dlugosc2 = strlen(napis2);
+    size_t dlugosc3 = strlen(napis3);
+    char* wynik = malloc((dlugosc1 + dlugosc2 + dlugosc3 + 1) * sizeof(char)); // alokacja pamięci na wynikowy napis
+    strcpy(wynik, napis1); // kopiowanie pierwszego napisu do wyniku
+    strcpy(wynik + dlugosc1, napis2); // kopiowanie drugiego napisu do wyniku
+    strcpy(wynik + dlugosc1 + dlugosc2, napis3); // kopiowanie trzeciego napisu do wyniku
+    return wynik;
+}
+
+int main() {
+    char napis1[] = "To jest";
+    char napis2[] = " przykladowy";
+    char napis3[] = " napis.";
+    char* wynik = sklej(napis1, napis2, napis3);
+    printf("%s\n", wynik); // wyświetli "To jest przykładowy napis."
+    free(wynik); // zwolnienie zaalokowanej pamięci
+    return 0;
+}
+
+
+POTRZEBNE
+#include <stdio.h>
+#include <stdlib.h>
+
+
+
+int **alokuj(unsigned int n, unsigned int m){
+    int **t = malloc(n*sizeof(int*));
+    int i;
+    for(i=0;i<n;i++){
+        t[i] = malloc(m*sizeof(int*));
+    }
+    return t;
+}
+
+int(* alokuj2(unsigned int n, unsigned int m))[]{
+    return malloc(n*sizeof(int[m]));
+}
+
+void wypisz(int **t, unsigned int n, unsigned int m){
+    int i,j;
+    for(i=0;i<n;i++){
+        for(j=0;j<m;j++){
+            printf("%d\t", t[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void wypisz2(unsigned int n, unsigned int m, int t[][m]){
+    int i,j;
+    for(i=0;i<n;i++){
+        for(j=0;j<m;j++){
+            printf("%d\t", t[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void wczytaj(int **t, unsigned int n, unsigned int m){
+    int i,j;
+    for(i=0;i<n;i++){
+        for(j=0;j<m;j++){
+            scanf("%d", &t[i][j]);
+        }
+    }
+}
+
+void wczytaj2(unsigned int n, unsigned int m, int t[][m]){
+    int i,j;
+    for(i=0;i<n;i++){
+        for(j=0;j<m;j++){
+            scanf("%d", &t[i][j]);
+        }
+    }
+}
+
+int main() {
+    int **t = alokuj(3,3);
+    wczytaj(t,3,3);
+    printf("\n");
+    wypisz(t,3,3);
+    printf("\n");
+    int tab[3][4];
+    wczytaj2(3, 4, tab);
+    printf("\n");
+    wypisz2(3, 4, tab);
+    printf("\n");
+    int tablica[4][4] = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+    wypisz2(4, 4, tablica);
+
+
+}
+
+zad6.2.3
+
+void zwolnij(int **t, unsigned int n, unsigned int m){
+    int i;
+    for(i=0;i<n;i++){
+        free(t[i]);
+    }
+    free(t);
+}
+
+
+zad6.2.7
+int **alokujtrojkat(unsigned int n){
+    int **t = malloc(n*sizeof(int*));
+    int i;
+    for(i=0;i<n;i++){
+        t[i] = malloc((i+1)*sizeof(int*));
+    }
+    return t;
+}
+
+zad na plusa
+
+int **alokujpierscien(unsigned int n){
+    int **t = malloc(n*sizeof(int*));
+    int i;
+    for(i=0;i<n;i++){
+        if(i==0 or i==n-1){
+        t[i] = malloc(n*sizeof(int*));
+    }else
+        t[i] = malloc(2*sizeof(int*));
+    }
+    return t;
+}
+
