@@ -1,2 +1,84 @@
-7.2.1
+7.2.1/ 7.2.2
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+struct trojkat{
+    double a, b, c;
+};
+
+double obwod(struct trojkat t){
+    return t.a + t.b + t.c;
+}
+
+double pole(struct trojkat t){
+    double p, P;
+    p = (t.a+t.b+t.c)/2.0;
+    P = sqrt((p*(p-t.a)*(p-t.b)*(p-t.c)));
+    return P;
+}
+
+void czy_to_trojkat(struct trojkat t){
+    if((t.a+t.b>t.c) && (t.a+t.c>t.b) && (t.c+t.b>t.a)){
+        printf("Taki trojkat isnieje\n");
+    }else{
+        printf("Taki trojkat nie isnieje\n");
+    }
+}
+
+void jakitrojkot(struct trojkat t){
+    if((t.a*t.a + t.b*t.b > t.c*t.c) && (t.c*t.c + t.b*t.b > t.a*t.a) && (t.a*t.a + t.c*t.c > t.b*t.b)){
+       printf("Taki trojkat jest ostry\n");
+    }
+    else if((t.a*t.a + t.b*t.b == t.c*t.c) || (t.c*t.c + t.b*t.b == t.a*t.a) || (t.a*t.a + t.c*t.c == t.b*t.b)){
+       printf("Taki trojkat jest prostokatny\n");
+    }
+    else if((t.a*t.a + t.b*t.b < t.c*t.c) || (t.c*t.c + t.b*t.b < t.a*t.a) || (t.a*t.a + t.c*t.c < t.b*t.b)){
+       printf("Taki trojkat jest rozwarty\n");
+    }
+}
+
+
+void przepisz(struct trojkat t1, struct trojkat *t2){
+    *t2 = t1;
+}
+
+void wypisz(struct trojkat t){
+    printf("a: %f\n", t.a);
+    printf("b: %f\n", t.b);
+    printf("c: %f\n", t.c);
+    printf("\n");
+}
+
+int main()
+{
+    struct trojkat t1;
+    t1.a = 3;
+    t1.b = 4;
+    t1.c = 5;
+
+    struct trojkat *t2;
+    t2 = malloc(sizeof(struct trojkat));
+    przepisz(t1, t2);
+
+    wypisz(t1);
+    wypisz(*t2);
+
+    printf("Obwod: %f\n", obwod(t1));
+    printf("Pole: %f\n", pole(t1));
+    czy_to_trojkat(t1);
+    jakitrojkot(t1);
+    printf("%d\n", sizeof(double));
+    printf("%d\n", sizeof(struct trojkat));
+
+
+
+    return 0;
+}
+
+
+7.2.3
+
+
 
