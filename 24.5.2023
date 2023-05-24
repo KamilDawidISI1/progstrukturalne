@@ -132,3 +132,75 @@ int main()
 
     return 0;
 }
+
+--------------------------------------
+
+minelement
+
+int minelement(struct element *Lista){
+    int min = Lista->i;
+    while(Lista!=NULL){
+        if(Lista->i < min){
+            min = Lista->i;
+        }
+        Lista=Lista->next;
+    }
+    return min;
+}
+
+--------------------------------
+7.3.20 i 7.3.21 w domu
+
+------------------------------------
+
+funkcja dodaj po elem(jak elem nie istnieje to na początek):
+struct element * dodajpoelem(struct element * Lista, struct element * elem, int a){
+    struct element *wsk=malloc(sizeof(struct element));
+    wsk->i=a;
+    if(elem == NULL){
+        wsk->next=Lista;
+        Lista = wsk;
+    }
+    else{
+        wsk->next=elem->next;
+        elem->next=wsk;
+    }
+    return Lista;
+};
+
+-------------------------------------------
+
+funkcja usuwajaca:
+struct element * usun(struct element * Lista, int a){
+    struct element *wsk1, *wsk2;
+    if(Lista == NULL){
+        return Lista;
+    }
+    wsk1 = Lista;
+    if(Lista->i==a){
+        Lista=Lista->next;
+        free(wsk1);
+    }
+    else{
+      while((wsk1->next!=NULL) && (wsk1->next->i!=a)){
+        
+        wsk1=wsk1->next;
+    }
+    if(wsk1->next!=NULL){
+        wsk2=wsk1->next;
+        wsk1->next=wsk2->next;
+        free(wsk2);
+    }  
+    }
+    return Lista;
+};
+
+-------------------------------
+na kolosa 
+2 zadania z napisów
+-modyfikacja napisów
+-modyfikacja + przeliczanie
+2 zad z tablic wielowymiaryw
+-tablice wielowymiarowe
+-tablice tablic
+2 zad z list lub 1 z list i 1 zad z struktór
