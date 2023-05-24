@@ -1,1 +1,134 @@
+zad 7.3.1 7.3.2
 
+#include <stdio.h>
+#include <stdlib.h>
+
+struct element{
+    int i;
+    struct element *next;
+};
+
+struct element *utworz(){
+    return NULL;
+};
+
+void wyczysc(struct element* Lista){
+struct element *wsk = Lista
+while(Lista!=NULL){
+    Lista = Lista->next;
+    free(wsk);
+    wsk = Lista;
+}
+}
+
+int main()
+{
+    printf("Hello world!\n");
+    return 0;
+}
+
+---------------------------------------
+
+funckcje dodaj
+
+struct element *dodaj(struct element *Lista, int a){
+    struct element *wsk = malloc(sizeof(struct element));
+    wsk->i=a;
+    wsk->next=Lista;
+    return wsk;
+};
+
+struct element * dodajnakoniec(struct element* Lista, int a){
+    struct element *wsk = Lista;
+    if(Lista == NULL){
+        Lista = malloc(sizeof(struct element));
+        Lista->i = a;
+        Lista->next = NULL;
+    }
+    else{
+        while(wsk->next != NULL){
+            wsk = wsk->next;
+        }
+        wsk->next = malloc(sizeof(struct element));
+        wsk->next->i = a;
+        wsk->next->next = NULL;
+    }
+    return Lista;
+
+}
+
+
+------------------------------
+
+funcje ileelementów, sumaelementów wypisz
+
+int dlugosclisty(struct element *Lista){
+    int pom = 0;
+    while(Lista!=NULL){
+        pom++;
+        Lista=Lista->next;
+    }
+    return pom;
+}
+
+int sumaelementow(struct element *Lista){
+    int sum = 0;
+    while(Lista!=NULL){
+        sum+=Lista->i;
+        Lista=Lista->next;
+    }
+    return sum;
+}
+
+void wypisz(struct element *Lista){
+    while(Lista!=NULL){
+        printf("%d\n", Lista->i);
+        Lista=Lista->next;
+    }
+    printf("\n");
+}
+
+----------------------------------
+jak na razie w main
+
+int main()
+{
+    struct element * lista = malloc(sizeof(struct element));
+    lista->i = 5;
+    lista->next = malloc(sizeof(struct element));
+    lista->next->i = 5;
+    lista->next->next = malloc(sizeof(struct element));
+    lista->next->next->i = 7;
+    lista->next->next->next = malloc(sizeof(struct element));
+    lista->next->next->next->i = -4;
+    lista->next->next->next->next = NULL;
+
+
+    printf("%d\n", dlugosclisty(lista));
+    printf("%d\n", sumaelementow(lista));
+    wypisz(lista);
+
+
+
+    struct element *lista2 = utworz();
+    lista2 = dodajnakoniec(lista2, 4);
+    wypisz(lista2);
+    lista2 = dodajnakoniec(lista2, 15);
+    wypisz(lista2);
+    lista2 = dodajnakoniec(lista2, 3);
+    wypisz(lista2);
+    lista2 = dodajnakoniec(lista2, -7);
+    wypisz(lista2);
+    lista2 = dodajnakoniec(lista2, 9);
+    wypisz(lista2);
+    lista2 = dodajnakoniec(lista2, -2);
+    wypisz(lista2);
+
+    lista2=dodaj(lista2, 6);
+    wypisz(lista2);
+    printf("%d\n", dlugosclisty(lista2));
+    printf("%d\n", sumaelementow(lista2));
+
+
+    return 0;
+}
